@@ -1,0 +1,35 @@
+# Publishes this repository (the public copy of the main repository's site/ folder) to GitHub Pages on every push
+# to master (October 14, 2026; docs/SITE.md phase 0; moved under site/ on October 25 so that `git subtree split
+# --prefix=site` carries it: the main repository stays private, GitHub Pages on a free account needs a public one).
+# One-time setup in the repository's Settings > Pages: Source "GitHub Actions"; then add the custom domain
+# watchsal.com there (the CNAME file in site/ keeps it), and at Namecheap point the apex A records at
+# GitHub Pages (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153) and `www` CNAME at
+# <user>.github.io. site/install.html is written by scripts/package.mjs and committed (the site serves no zip since
+# October 26: the store is the only download). The actions are pinned to commit hashes (October 26, the security
+# review): a hijacked version tag cannot run here; bump them by hand, hash and comment together.
+name: pages
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAL: Privacy policy</title>
+<meta name="description" content="SAL's privacy policy: what SAL keeps on your computer, and the few requests it makes.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="icons/icon48.png" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="icons/mark.svg">
+<link rel="apple-touch-icon" href="icons/icon128.png">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand cond" href="index.html">SAL</a>
+    <a class="toplink cond" href="index.html#install">Install</a>
+  </div>
+</header>
+
+<main>
+  <article class="doc">
+    <div class="wrap">
+      <div class="doc-col">
+
+        <h1 class="cond">Privacy policy</h1>
+        <p class="updated">Last updated: October 30, 2026</p>
+
+        <p>SAL is a browser extension that changes the channel between live games in the streaming services you already subscribe to. This policy explains what SAL does with information.</p>
+        <p class="short">The short version: SAL runs on your computer and keeps what it learns there. It has no accounts (none yet) and no analytics. It does make requests of its own: for public scores, to the scores site named in section 3, which sees your internet address and which games SAL asks about; and for a small notice file from its own site, watchsal.com. Neither carries an account, cookie or identifier of yours.</p>
+
+        <h2 class="cond">1. What SAL reads on the streaming page</h2>
+        <p>In the YouTube TV and Hulu + Live TV tabs you open in the SAL window or arm, SAL reads (in a tab of those sites anywhere else, and in a Peacock tab you did not choose for breaks, SAL's page script reads nothing and does nothing):</p>
+        <ul>
+          <li>the captions text (SAL turns captions on in its own tabs and keeps them out of view, so their words can help tell a break from play, unless you tick Show captions in Settings; when SAL lets a tab go it puts its captions back as they were);</li>
+          <li>the video's position and state (playing, paused, how far behind live);</li>
+          <li>the channel name and the program title shown in the player;</li>
+          <li>the tab's address, to know which channel it is on.</li>
+        </ul>
+        <p>In an NBA League Pass tab (www.nba.com), and only once you turn that service on in Settings, SAL reads:</p>
+        <ul>
+          <li>the game page's address and title, to know which game the tab shows;</li>
+          <li>the video's position and state (playing, paused, how far behind live).</li>
+        </ul>
+        <p>To change games in that tab, SAL opens a game's page by its address, or the site's games page and that game's link or button there, and it presses the page's own controls: the close button of the how-to-watch pop-up, the continue button of a still-watching prompt, Try again (or OK) on the player's error message, and, when a stream does not start by itself, the game's Watch Live button, the player's play button, its live badge or the first stream in its list. It follows a link only to a game's page on www.nba.com, reads nothing from your account there and never presses or follows a sign-in, subscribe, purchase, upgrade, trial or account control.</p>
+        <p>When a YouTube TV tab or a game page on that service shows no picture, SAL reads the text the page shows over the player (an error, a notice, a prompt) and keeps only the known notice in it: a stream limit, a still-watching prompt, a player error and its code, or a blackout notice; the rest of the text is dropped as soon as it is read. On a game page whose stream would not start, it also reads the labels of the buttons and links around the player. Both go into the local session log described below, so a report can say why the tab had no picture.</p>
+        <p>In a Peacock tab you choose to use during breaks, SAL reads only the show's title and its position, so it can pause and resume it. If you tick "Captions on the show during breaks" in Settings (off unless you do), SAL also turns the show's captions on through the player while the show is on air, and off again when a game comes back; it never reads their words.</p>
+        <p>SAL uses this to rank the games and to notice breaks. It is held in memory on your computer; the parts that explain a channel change go into the local session log described below. None of it is sent anywhere. SAL never reads or touches sign-in fields, passwords, payment details or account pages, and it does not read pages on any other site.</p>
+
+        <h2 class="cond">2. What SAL captures</h2>
+        <p>SAL looks at the picture of the tabs you arm, and only those: you arm a tab by clicking the SAL button while it is in front, one tab per stream your plan allows (three on YouTube TV, two on Hulu + Live TV, one or three on NBA League Pass depending on its plan), and the browser shows its own capture indicator on each armed tab. SAL lets go of every capture when the session ends, and of a tab's capture as soon as that tab goes to a page outside its streaming service; you arm the tabs again, one click each, before the next session. SAL takes the picture only, never the sound. A few small parts of the picture (the corners and the strip where a broadcast shows its logo or its score) are read a couple of times a second and analysed in memory on your computer to tell a broadcast from a break, then discarded. The picture is never recorded, never saved and never uploaded, with these exceptions, which also stay on your computer:</p>
+        <ul>
+          <li><em>Logo templates.</em> The small image of a network's on-screen logo (or of a game's score box), learned so SAL recognises it next time, kept in the extension's own storage.</li>
+          <li><em>Event thumbnails.</em> At each moment SAL noticed a break or a return, a 160x90 thumbnail of the picture and the logo patch, kept in the local session log so the review page can show why it changed the channel.</li>
+          <li><em>Record the picture (for testing).</em> A setting for test computers, off by default, under For testing in Settings, which only a copy of SAL loaded for testing (a development install) shows and obeys; the store version refuses it whatever its settings say. While it is on and a session runs, SAL keeps those small parts a couple of times a second and a 480x270 picture of each armed tab about once a second, with what the tab reported beside them (its address, the captions text, the video's state), in the extension's own storage on your computer only (at most 3 GB, the oldest dropped first). They become a file only when you press Export recording on the review page yourself, and Delete recording there removes them.</li>
+        </ul>
+        <p>When SAL changes to a tab whose picture has not started yet, it shows its own card on black (the SAL mark, the game's name and "Loading") until the picture moves, for 15 seconds at most. The card is drawn by SAL on your screen; nothing about it is kept but how long it stayed up, in the session log.</p>
+
+        <h2 class="cond">3. The scoreboard request</h2>
+        <p>To know which games are live and how close they are, SAL requests the public sports scoreboard from <code>site.api.espn.com</code>, one request per sport you follow (for college sports, the current day's games only): about once a minute while a session runs (every three minutes for a sport with nothing on), and, while no session runs, every 30 seconds when a game is live or about to start and every five minutes otherwise. Untick "Check scores every 30 seconds" in Settings and SAL makes no scoreboard request outside a session. During a session it also requests the scores of the few games in its tabs from <code>sports.core.api.espn.com</code> about every 5 seconds, a few small requests per game. Each request asks only for public scores and carries no account, cookie or identifier of yours. The per-game requests name the games in your tabs, so that site can tell from your internet address which games you watched and when; like any web request, each reaches the site from your internet address with your browser's standard headers, and the browser marks it as coming from SAL. SAL is not affiliated with that site's operator.</p>
+        <p>Once a day, and again when you press Start if it has not read it in the last hour, SAL also reads one small public file from its own site, <code>watchsal.com</code>: the newest version number, a one-line notice (for example a known problem with a streaming site), and the version of the latest logo template pack, so the start screen can tell you. That request carries no account, cookie, identifier or setting of yours, and SAL holds no permission for that site (the file is public and readable from anywhere). <code>watchsal.com</code> is hosted on GitHub Pages, which, like any web host, logs the internet addresses and browsers that reach it; we do not receive or use those logs. These two are the only network requests SAL makes on its own. If you remove SAL, your browser opens one page on <code>watchsal.com</code> that asks what went wrong; the page has no form, no cookies and no analytics, and like any page it reaches our host from your internet address. The file can also name a version of SAL that should pause; on that version SAL says so in place of Start, and a session already running finishes.</p>
+
+        <h2 class="cond">4. What SAL keeps on your computer</h2>
+        <p>In the browser's own extension storage, on your computer only:</p>
+        <ul>
+          <li>your settings (sports, services, favorite team, how many streams to use, break timing, the ranking order, captions on the show, the For testing settings);</li>
+          <li>the channel map SAL learns from your own YouTube TV or Hulu + Live TV guide, and the games it has seen on NBA League Pass (each game's page name and date);</li>
+          <li>the logo templates described above, one per channel and sport;</li>
+          <li>the daily notice described in section 3;</li>
+          <li>a short summary of your last session (when it ran, the tabs, how many channel changes, which games were on and for how long, your bad-cut marks, anything that went wrong), which the start screen shows in its Last session box;</li>
+          <li>a session log of your sessions from the last seven days (at most 20): the games and scores, each channel change SAL made and why (a reason can quote a short caption phrase), the channel and program names of your tabs, the addresses of NBA League Pass's game pages SAL moved a tab to (every address in the log without what follows the page's path), the notice a page showed over a player with no picture and the button labels described in section 1, the channels that showed no player for a game, the title of a show you chose for breaks and when its captions went on and off, your bad-cut marks, and the event thumbnails described above;</li>
+          <li>while Record the picture is on, the recording described in section 2.</li>
+        </ul>
+        <p>You can delete any session on the review page, and the pictures recorded in it go with it (Delete recording removes a recording alone). SAL deletes a session itself seven days after it ended. Removing the extension removes all of it.</p>
+        <p><em>Your SAL numbers.</em> SAL counts how you use it, on your computer only: how many sessions you started and on how many days, their hours and the time a game was on air, its channel changes, your locks, switches, bad-cut marks and saved reports, which of your services had a tab in a session, whether you finished the setup and whether your channels were mapped or are learned as you watch, every click on a greyed SAL Plus control (one count per control), and the time on air per league and per team (by the team's abbreviation). These are counts and durations only: no titles, no games, no times of day, and the one date kept is the day the counting began. You see them under Details in the lobby, as Your SAL numbers. The numbers leave your computer only inside a report file you save and send yourself (below); SAL never sends them on its own. Removing the extension removes them.</p>
+
+        <h2 class="cond">5. Files you export</h2>
+        <p>The review page can write files to your computer, only when you press its buttons: a session file (<code>.jsonl</code>, Export), a learned marks file (the logo templates, the channel map and short summaries of your sessions), and, if you turned Record the picture on, the recording (Export recording). One setting for testing, Live export (off unless you turn it on, under For testing in Settings, on a development install only), saves that same session file to your Downloads folder every 5 or 10 minutes while a session runs, replacing it each time. The start screen's Copy button, in the Last session box, puts that box's few sentences on your clipboard. SAL never sends any of it anywhere. If you choose to share one, for example to report a channel change that went wrong, you send it yourself, and it contains only the items listed above: no sound, no account details, no passwords and no video. A session file does carry the event thumbnails described in section 2, a small still of the picture at each break and return; a recording carries its pictures.</p>
+        <h3 class="cond">Reports you send</h3>
+        <p>When something goes wrong, Report a problem (on the bar over the picture, in the lobby, or Alt+R) saves one file to your Downloads folder when you press Save, named <code>sal-report-</code> and the date and time. It contains what you picked and the note you typed; the last 15 minutes of the session log described in section 4, without the thumbnails; your settings and the channel map; the state of each SAL tab (its channel id and picture status, never its web address); SAL's version; your SAL numbers (section 4); and the names and versions of your browser and operating system. The channel map names your local stations, so it tells which TV market you watch from, and your favorite team is among the settings. The channel map also shows which channels your plan includes, and the times in the log show when you watched. It contains no video, no pictures, no passwords or account details, no cookies and no web addresses (any address in the log is taken out of the file). Nothing is sent automatically: SAL only saves the file. You decide whether to send it, by email to hello@watchsal.com, and you can open it in any text editor first to see exactly what it says.</p>
+        <h3 class="cond">Files you send us</h3>
+        <p>If you email us a report or a session file, it reaches the inbox of SAL's owner, who reads it to fix SAL. We keep it privately, only to test SAL, and never share or sell it; a copy kept among SAL's tests has the pictures and your name taken out. Ask at hello@watchsal.com and we delete what you sent.</p>
+
+        <h2 class="cond">6. Your streaming accounts</h2>
+        <p>You log in to your streaming services on their own pages, exactly as you would without SAL. SAL never sees, asks for or stores your passwords or account details, and never signs in on your behalf. Your relationship with those services, and their terms, are between you and them.</p>
+
+        <h2 class="cond">7. What SAL does not do</h2>
+        <ul>
+          <li>No accounts yet (see section 11), no analytics, no tracking, no advertising. SAL already contains the sign-in for future accounts; it does nothing until accounts exist and you choose to connect one.</li>
+          <li>No tracking across sites, so SAL treats a browser's Do Not Track signal no differently.</li>
+          <li>No selling, renting or sharing of any data, with anyone.</li>
+          <li>No remote code: everything SAL runs ships inside the extension, and it downloads no code.</li>
+          <li>Nothing run from afar. Since version 0.4.20 (October 29, 2026), SAL's own site can pause a version with a known problem: on that version SAL says so in place of Start (section 3). The site cannot run, change or read anything on your computer.</li>
+          <li>No recording, copying, downloading or re-streaming of any video or sound, beyond the small stills and the test recording kept on your own computer, described in section 2.</li>
+          <li>It never alters any stream or anything in it. It hides only two things, both in its own tabs: the captions it turns on as a signal (unless you tick Show captions), and, for at most 15 seconds after it changes the channel, a picture that has not started yet, under its Loading card (section 2). It changes which tab is in front, the way a remote control changes the channel.</li>
+        </ul>
+
+        <h2 class="cond">8. Sites SAL runs on, and its permissions</h2>
+        <p>SAL has access to these sites:</p>
+        <ul>
+          <li><code>site.api.espn.com</code>: the public scoreboard (section 3). Read only.</li>
+          <li><code>sports.core.api.espn.com</code>: the scores of the games in SAL's tabs, one game at a time (section 3). Read only.</li>
+          <li><code>tv.youtube.com</code>: the streaming service SAL works with (section 1).</li>
+          <li><code>www.hulu.com</code>: Hulu + Live TV, the second live service SAL works with, when you turn it on in settings or open it from the start screen (section 1).</li>
+          <li><code>www.nba.com</code>: NBA League Pass, the third live service SAL works with, where a game's page is the tab SAL changes games in; only once you turn the service on in settings, and until then SAL does nothing on its pages (section 1).</li>
+          <li><code>www.peacocktv.com</code>: optional, only for a show you choose to play during breaks (section 1).</li>
+        </ul>
+        <p>SAL asks for no other site, now or later in this version. Like any extension with a toolbar button, it can also reach the tab you click the SAL icon on, until that tab goes to another page; it uses that only to arm a streaming tab or to open the lobby. It reads the daily notice from its own site, <code>watchsal.com</code> (section 3), without any permission for it: the file is public and the browser lets any page read it.</p>
+        <p>The browser shows the permissions SAL asks for when you install it. Each has one use: <em>storage</em> and <em>unlimited storage</em>, for the settings, templates and session log on your computer (section 4); <em>alarms</em>, to check the scoreboard and keep a session running every 30 seconds, and to read the daily notice; <em>notifications</em>, for a short note when you press a SAL key outside a session, the break and big-moment notes you can switch off in settings, and the final scores you can turn on there for the leagues you choose; <em>tabs</em>, to open your services in the SAL window, bring a game to the front, mute the others (and put each tab's sound back as it was when the session ends), reload a tab whose player stopped, and notice a tab that left its service; <em>active tab</em> and <em>tab capture</em>, to look at the picture of a tab you clicked on (section 2); <em>offscreen</em>, for the hidden page that does that looking; <em>scripting</em>, to put SAL's own page script back into a tab on the sites above that stopped answering, for example because it was open before SAL was updated; <em>downloads</em>, to save the files you ask for to your Downloads folder: a report file when you press Save in Report a problem, a recording when you press Export recording, and the Live export file while that setting is on (section 5), whose earlier entry it also takes off the browser's download list (the list entry only, never the file).</p>
+
+        <h2 class="cond">9. Limited Use</h2>
+        <p class="quote">The use of information received from Google APIs will adhere to the Chrome Web Store User Data Policy, including the Limited Use requirements.</p>
+        <p>In plain words: the information SAL handles is used only to provide its single purpose, changing the channel between your live games. It is not transferred to anyone except as section 3 describes (the score requests name the games in your tabs), not used for advertising, not used to determine credit-worthiness or for lending, and no person reads it, except the files you choose to send us, which only SAL's owner reads, to fix SAL (section 5). Apart from those requests, it leaves your computer only when you export a file and send it yourself.</p>
+
+        <h2 class="cond">10. Children</h2>
+        <p>SAL is not directed at children under 13. We do not knowingly receive files from children under 13, and we delete any we learn of.</p>
+
+        <h2 class="cond">11. Changes</h2>
+        <p>If SAL ever starts collecting anything beyond the files you choose to send us, this policy will say so before that version ships, and the store listings will reflect the change. The date at the top shows when it last changed.</p>
+
+        <h2 class="cond">12. Contact</h2>
+        <p>Questions about this policy: hello@watchsal.com.</p>
+
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>SAL is independent and not affiliated with any streaming service, league or network. Your subscriptions and their terms are your own.</p>
+    <nav class="foot-links cond" aria-label="Legal">
+      <a href="privacy.html" aria-current="page">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
